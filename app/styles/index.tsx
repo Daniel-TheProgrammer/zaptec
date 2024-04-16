@@ -128,7 +128,11 @@ export const MenuRight = styled.div`
 
 export const SmoothContent = styled.div`
   min-height: 100vh;
-  position:relative;
+  display: flex;
+  @media (min-width: 640px) {
+    align-items: flex-end;
+  }
+  position: relative;
   & div {
     min-height: 100vh;
   }
@@ -149,4 +153,85 @@ export const VideoWrapper = styled.div`
   max-width: 100%;
   width: 100%;
   height:100%;
+`;
+
+
+export const TitleContainer = styled.div`
+  padding-bottom: clamp(5.18rem, 6.39vw, 7.19rem);
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  @media (min-width: 1280px) .container {
+    max-width: 1280px;
+  }
+
+  @media (min-width: 1024px) .container {
+    max-width: 1024px;
+  }
+  @media (min-width: 768px) .container {
+    max-width: 768px;
+  }
+  @media (min-width: 640px) .container {
+    max-width: 640px;
+  }
+  @media (min-width: 480px) .container {
+    max-width: 480px;
+  }
+`;
+
+export const TitleWrapper = styled.div`
+  column-gap: clamp(1.8rem, 2.22vw, 2.5rem);
+  justify-content: space-between;
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  & h1 {
+    @media (min-width: 768px) {
+      font-size: clamp(102px, 11vw, 400px);
+      white-space: nowrap;
+    }
+    @media (min-width: 640px) {
+      line-height: 1.25;
+      font-size: clamp(5.74rem, 7.08vw, 7.97rem);
+    }
+  }
+`;
+
+
+export const Up1Section = styled.div`
+  @media (min-width: 640px)  {
+    padding-bottom: clamp(5.4rem, 6.67vw, 7.5rem);
+    padding-top: clamp(9.45rem, 11.67vw, 13.13rem);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: clamp(7.65rem, 9.44vw, 10.63rem);
+  }
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+`;
+
+export const InnerTextCenter = styled.div`
+  max-width: clamp(45rem, 55.56vw, 62.5rem);
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const Text = styled.div`
+  color: rgb(34, 34, 34);
+  @media (min-width: 640px) {
+    font-size: clamp(4.05rem, 5vw, 5.63rem);
+  }
+  
 `;
