@@ -339,3 +339,154 @@ export const MediaWrapperCar = styled.div`
     height: auto;
   }
 `;
+
+
+export const ModuleUpSection = styled.div`
+  max-width: none;
+  position: relative;
+  @media (min-width: 640px)  {
+    margin-top: clamp(7.65rem, 9.44vw, 10.63rem);
+    margin-bottom: clamp(7.65rem, 9.44vw, 10.63rem);
+  }
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+`;
+
+export const InfoModuleUp = styled.div`
+  margin-bottom: clamp(1.8rem, 2.22vw, 2.5rem);
+  overflow: hidden;
+  line-height: 1.5;
+  font-size: clamp(0.9rem, 1.11vw, 1.25rem);
+`;
+
+export const InfoModuleUpDiv = styled.div`
+  justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+
+  & h2 {
+    line-height: 1.2;
+    @media (min-width: 640px) {
+      font-size: clamp(2.25rem, 2.78vw, 3.13rem);
+    }
+  }
+`;
+
+export const SimpleButton = styled.a`
+  margin-top: 0.75rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+  stroke: currentColor;
+  text-align: left;
+  font-size: clamp(0.79rem, 0.97vw, 1.09rem);
+  color: inherit;
+  text-decoration: inherit;
+`;
+
+
+export const Swiper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+  display: block;
+`;
+
+export const SwipperWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  transition-timing-function: var(
+    --swiper-wrapper-transition-timing-function,
+    ease
+  );
+  transition-timing-function: var(
+    --swiper-wrapper-transition-timing-function,
+    initial
+  );
+  box-sizing: content-box;
+  &:first-child {
+    flex: 1 1 0%;
+    margin-right: 20px;
+  }
+  &:last-child {
+    margin-right: 0 !important;
+  }
+  & > div {
+    width: auto !important;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    display: block;
+  }
+`;
+
+export const SwipperSlide = styled.div`
+  & a {
+    width: 100%;
+    display: block;
+    position:relative;
+
+  }
+`;
+
+export const MediaWrapperCard = styled.div`
+  margin-bottom: clamp(1.13rem, 1.39vw, 1.56rem);
+  position:relative;
+  & img {
+    position:relative;
+  }
+`;
+
+export const CardContent = styled.div`
+  margin-bottom: clamp(1.13rem, 1.39vw, 1.56rem);
+
+  & > div {
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    margin-bottom: 0.75rem;
+  }
+
+  & span {
+    --tw-text-opacity: 1;
+    color: rgb(118 117 114 / var(--tw-text-opacity));
+    line-height: 1;
+    padding-top: 0.56rem;
+    padding-bottom: 0.56rem;
+    padding-left: 0.62rem;
+    padding-right: 0.62rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(246 246 246 / var(--tw-bg-opacity));
+    border-radius: 6.25rem;
+    display: block;
+  }
+
+  & h3 {
+    --tw-text-opacity: 1;
+    color: rgb(34 34 34 / var(--tw-text-opacity));
+    line-height: 1.5;
+    font-size: clamp(1.07rem, 1.32vw, 1.48rem);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    font-weight: inherit;
+  }
+`;

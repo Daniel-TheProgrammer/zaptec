@@ -19,6 +19,14 @@ import {
   BlockImageWrapper,
   Up3Section,
   Up3SectionContainer,
+  InfoModuleUp,
+  InfoModuleUpDiv,
+  ModuleUpSection,
+  Swiper,
+  SwipperWrapper,
+  SwipperSlide,
+  MediaWrapperCard,
+  CardContent,
 } from "./styles";
 
 export default function Home() {
@@ -107,6 +115,91 @@ export default function Home() {
             </h2>
           </Up3SectionContainer>
         </Up3Section>
+        <ModuleUpSection>
+          <InfoModuleUp>
+            <InfoModuleUpDiv>
+              <h2>Info hub</h2>
+            </InfoModuleUpDiv>
+            <Swiper>
+              <SwipperWrapper>
+                <SwipperSlide>
+                  <a>
+                    <div>
+                      <MediaWrapperCard >
+                        <Image
+                          src=""
+                          alt=""
+                          style={{
+                            width: "100%",
+                            height: "283px"
+                          }}
+                        />
+                      </MediaWrapperCard>
+                      <CardContent>
+                        <div>
+                          <span>Inside zaptec</span>
+                        </div>
+                        <h3>
+                          He{"'"}s done it twice before. Now, the new CEO aims
+                          to repeat the success with Zaptec.
+                        </h3>
+                      </CardContent>
+                    </div>
+                  </a>
+                </SwipperSlide>
+                <SwipperSlide>
+                  <a>
+                    <div>
+                      <MediaWrapperCard>
+                        <Image
+                          src=""
+                          alt=""
+                          style={{
+                            width: "100%",
+                            height: "563px",
+                          }}
+                        />
+                      </MediaWrapperCard>
+                      <CardContent>
+                        <div>
+                          <span>Industrial news</span>
+                        </div>
+                        <h3>
+                          Quality alliance of the electrical trades in Germany:
+                          Zaptec becomes an e-brand partner of the ZVEH
+                        </h3>
+                      </CardContent>
+                    </div>
+                  </a>
+                </SwipperSlide>
+                <SwipperSlide>
+                  <a>
+                    <div>
+                      <MediaWrapperCard>
+                        <Image
+                          src=""
+                          alt=""
+                          style={{
+                            width: "100%",
+                            height: "413px"
+                          }}
+                        />
+                      </MediaWrapperCard>
+                      <CardContent>
+                        <div>
+                          <span>Inside Zaptec</span>
+                        </div>
+                        <h3>
+                          Annual Report and Sustainability Report for 2023
+                        </h3>
+                      </CardContent>
+                    </div>
+                  </a>
+                </SwipperSlide>
+              </SwipperWrapper>
+            </Swiper>
+          </InfoModuleUp>
+        </ModuleUpSection>
       </section>
     </>
   );
