@@ -25,7 +25,6 @@ export const InnerContainer = styled.div`
     padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
     padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
   }
-  
 `;
 
 export const MenuLeft = styled.div`
@@ -54,7 +53,6 @@ export const Logo = () => {
   );
 };
 
-
 export const SecMenu = styled.div`
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -73,7 +71,6 @@ export const SecMenu = styled.div`
     text-decoration: inherit;
   }
 `;
-
 
 export const MenuRight = styled.div`
   gap: 1rem;
@@ -125,7 +122,6 @@ export const MenuRight = styled.div`
   }
 `;
 
-
 export const SmoothContent = styled.div`
   min-height: 100vh;
   display: flex;
@@ -141,20 +137,19 @@ export const SmoothContent = styled.div`
 export const MediaWrapper = styled.div`
   --tw-bg-opacity: 1;
   background-color: rgb(34 34 34 / var(--tw-bg-opacity));
-  width:100%;
-  height:100%;
-  position:absolute;
-  top:0;
-  left:0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 export const VideoWrapper = styled.div`
   object-fit: cover;
   max-width: 100%;
   width: 100%;
-  height:100%;
+  height: 100%;
 `;
-
 
 export const TitleContainer = styled.div`
   padding-bottom: clamp(5.18rem, 6.39vw, 7.19rem);
@@ -203,9 +198,8 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-
 export const Up1Section = styled.div`
-  @media (min-width: 640px)  {
+  @media (min-width: 640px) {
     padding-bottom: clamp(5.4rem, 6.67vw, 7.5rem);
     padding-top: clamp(9.45rem, 11.67vw, 13.13rem);
     overflow: hidden;
@@ -218,6 +212,98 @@ export const Up1Section = styled.div`
     padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
     padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
   }
+`;
+
+export const Up2Section = styled.div`
+  position: relative;
+  @media (min-width: 640px) {
+    margin-top: clamp(7.65rem, 9.44vw, 10.63rem);
+    margin-bottom: clamp(7.65rem, 9.44vw, 10.63rem);
+  }
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+`;
+
+export const Up3Section = styled.div`
+  overflow: hidden;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  @media (min-width: 640px) {
+    margin-top: clamp(7.65rem, 9.44vw, 10.63rem);
+    margin-bottom: clamp(7.65rem, 9.44vw, 10.63rem);
+  }
+`;
+
+export const Up3SectionContainer = styled.div`
+  @media (min-width: 640px) {
+    padding-bottom: clamp(8.33rem, 10.28vw, 11.56rem);
+  }
+  @media (min-width: 640px) {
+    padding-top: clamp(7.65rem, 9.44vw, 10.63rem);
+  }
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: clamp(81rem, 100vw, 112.5rem);
+
+  & > h2 {
+    @media (min-width: 1024px) {
+      font-size: clamp(6.75rem, 8.33vw, 9.38rem);
+    }
+    margin-bottom: clamp(1.8rem, 2.22vw, 2.5rem);
+    max-width: clamp(50.4rem, 62.22vw, 70rem);
+    --tw-text-opacity: 1;
+    color: rgb(25 49 47 / var(--tw-text-opacity));
+    line-height: 1 !important;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+  }
+`;
+
+export const InnerDesktop = styled.div`
+  gap: 0.5rem;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  display: grid;
+`;
+
+export const BlockContentWrapper = styled.div`
+  margin-top: -5vh;
+  grid-row-start: 1;
+  grid-row: span 3 / span 3;
+  grid-column-start: 1;
+`;
+
+export const BlockMediaWrapper = styled.div`
+  margin-top: -10vh;
+  grid-row-start: 1;
+  grid-row: span 3 / span 3;
+  grid-column-start: 6;
+`;
+
+export const BlockImageWrapper = styled.div`
+  padding-top: clamp(3.87rem, 4.78vw, 5.38rem);
+  padding-bottom: clamp(3.87rem, 4.78vw, 5.38rem);
+  align-items: center;
+  height: 100vh;
+  display: flex;
+`;
+
+export const BlockImageInnerWrapper = styled.div`
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 `;
 
 export const InnerTextCenter = styled.div`
@@ -233,5 +319,23 @@ export const Text = styled.div`
   @media (min-width: 640px) {
     font-size: clamp(4.05rem, 5vw, 5.63rem);
   }
-  
+`;
+
+export const MediaWrapperCar = styled.div`
+  margin-top: clamp(2.7rem, 3.33vw, 3.75rem);
+  @media (min-width: 640px) {
+    width: clamp(23.63rem, 29.17vw, 32.81rem);
+  }
+  margin-left: auto;
+  margin-right: auto;
+
+  & > img {
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 26.25 / 16.125;
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+  }
 `;
