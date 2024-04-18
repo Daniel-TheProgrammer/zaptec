@@ -1,6 +1,12 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export const Nav = styled.nav`
   background-color: transparent;
@@ -488,7 +494,7 @@ export const CardContent = styled.div`
   }
 `;
 
-export const JourneySection = styled.div`
+const JourneyStyle = styled.div`
   position: relative;
   @media (min-width: 640px) {
     margin-top: clamp(7.65rem, 9.44vw, 10.63rem);
@@ -499,6 +505,69 @@ export const JourneySection = styled.div`
     margin-bottom: 0 !important;
   }
 `;
+
+export const JourneySection = (props: any) => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  const handleSectionEnter = (isIn: boolean, top: any) => {
+    if (isIn) {
+      const progress = Math.min(Math.max(-(top - 700) / 700, 0), 1);
+      const r = Math.round(255 - 221 * progress);
+      const g = Math.round(255 - 221 * progress);
+      const b = Math.round(255 - 221 * progress);
+      const a = 1;
+
+      if (r >= 34 && g >= 34 && b >= 34) {
+        document.body.style.transition = "background-color 0.5s ease";
+        document.body.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a})`;
+      } else {
+        document.body.style.transition = "background-color 0.5s ease";
+        document.body.style.backgroundColor = "rgb(34, 34, 34)";
+      }
+    } else {
+      document.body.style.transition = "background-color 0.5s ease";
+      document.body.style.backgroundColor = "rgb(255, 255, 255)";
+    }
+  };
+
+  useGSAP(() => {
+    if (sectionRef.current) {
+      gsap.to(sectionRef.current?.children, {
+        scrollTrigger: {
+          trigger: sectionRef.current?.children,
+          start: "top top",
+          end: "bottom bottom",
+          pin: true,
+        },
+      });
+    }
+  });
+
+  useEffect(() => {
+    
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const isInViewport =
+        rect.top - 700 <= window.innerHeight && rect.bottom >= 700;
+
+      if (isInViewport) {
+        handleSectionEnter(true, rect.top);
+      } else {
+        handleSectionEnter(false, rect.top);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return <JourneyStyle ref={sectionRef}>{props.children}</JourneyStyle>;
+};
 
 export const PinSpace = styled.div`
   order: 0;
@@ -515,7 +584,7 @@ export const PinSpace = styled.div`
   overflow: visible;
   box-sizing: border-box;
   width: 100%;
-  height: 2383px;
+  height: 953px;
   padding: 0px 0px 1430px;
 `;
 
@@ -525,8 +594,6 @@ export const JourneySectionInnerWrapper = styled.div`
   align-items: center;
   inset: 0px auto auto 0px;
   margin: 0px;
-  max-height: 953px;
-  height: 953px;
   display: flex;
   padding: 0px;
   position: relative;
@@ -549,7 +616,6 @@ export const JourneyConent = styled.div`
     @media (min-width: 640px) {
       font-size: clamp(4.05rem, 5vw, 5.63rem);
     }
-    color: black;
   }
 `;
 
@@ -684,7 +750,6 @@ export const FooterBottomContainer = styled.div`
   width: 100%;
   flex-shrink: 0;
 `;
-
 
 export const FooterInnerBottom = styled.div`
   @media (min-width: 640px) {
