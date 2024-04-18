@@ -267,7 +267,7 @@ export const Up3SectionContainer = styled.div`
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    text-align:center;
+    text-align: center;
   }
 `;
 
@@ -340,11 +340,10 @@ export const MediaWrapperCar = styled.div`
   }
 `;
 
-
 export const ModuleUpSection = styled.div`
   max-width: none;
   position: relative;
-  @media (min-width: 640px)  {
+  @media (min-width: 640px) {
     margin-top: clamp(7.65rem, 9.44vw, 10.63rem);
     margin-bottom: clamp(7.65rem, 9.44vw, 10.63rem);
   }
@@ -390,7 +389,6 @@ export const SimpleButton = styled.a`
   color: inherit;
   text-decoration: inherit;
 `;
-
 
 export const Swiper = styled.div`
   margin-left: auto;
@@ -441,16 +439,15 @@ export const SwipperSlide = styled.div`
   & a {
     width: 100%;
     display: block;
-    position:relative;
-
+    position: relative;
   }
 `;
 
 export const MediaWrapperCard = styled.div`
   margin-bottom: clamp(1.13rem, 1.39vw, 1.56rem);
-  position:relative;
+  position: relative;
   & img {
-    position:relative;
+    position: relative;
   }
 `;
 
@@ -489,4 +486,218 @@ export const CardContent = styled.div`
     padding-bottom: 0.5rem;
     font-weight: inherit;
   }
+`;
+
+export const JourneySection = styled.div`
+  position: relative;
+  @media (min-width: 640px) {
+    margin-top: clamp(7.65rem, 9.44vw, 10.63rem);
+    margin-bottom: clamp(7.65rem, 9.44vw, 10.63rem);
+  }
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+`;
+
+export const PinSpace = styled.div`
+  order: 0;
+  place-self: auto;
+  grid-area: auto;
+  z-index: auto;
+  float: none;
+  flex-shrink: 1;
+  display: flex;
+  margin: 0px;
+  inset: 0px;
+  position: relative;
+  flex-basis: auto;
+  overflow: visible;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2383px;
+  padding: 0px 0px 1430px;
+`;
+
+export const JourneySectionInnerWrapper = styled.div`
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  inset: 0px auto auto 0px;
+  margin: 0px;
+  max-height: 953px;
+  height: 953px;
+  display: flex;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+`;
+
+export const JourneyConent = styled.div`
+  max-width: clamp(48.6rem, 60vw, 67.5rem);
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+  & h2 {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    text-align: center;
+    line-height: 1.2;
+    @media (min-width: 640px) {
+      font-size: clamp(4.05rem, 5vw, 5.63rem);
+    }
+    color: black;
+  }
+`;
+
+export const JourneyImagesDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+export const FooterView = styled.footer`
+  --tw-text-opacity: 1;
+  color: rgb(34 34 34 / var(--tw-text-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  overflow: hidden;
+`;
+
+export const FooterInnerView = styled.div`
+  @media (min-width: 768px) {
+    height: 100vh;
+  }
+  flex-direction: column;
+  display: flex;
+`;
+
+export const FooterInnerContainer = styled.div`
+  @media (min-width: 768px) {
+    height: 50vh;
+  }
+  display: flex;
+  padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+  padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+`;
+
+export const FooterCta = styled.div`
+  @media (min-width: 640px) {
+    padding-top: clamp(2.25rem, 2.78vw, 3.13rem);
+    padding-bottom: clamp(2.25rem, 2.78vw, 3.13rem);
+  }
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+
+  & p {
+    @media (min-width: 640px) {
+      font-size: clamp(4.05rem, 5vw, 5.63rem);
+    }
+    line-height: 1.2;
+  }
+`;
+
+export const FooterInnerContainer2 = styled.div`
+  max-width: clamp(90rem, 111.11vw, 125rem);
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+  gap: clamp(2.25rem, 2.78vw, 3.13rem);
+  margin-bottom: clamp(6.12rem, 7.56vw, 8.5rem);
+  justify-content: space-between;
+  flex: 1 1 0%;
+  display: flex;
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+`;
+
+export const FooterMenuNav = styled.div`
+  @media (min-width: 640px) {
+    -moz-column-gap: clamp(3.6rem, 4.44vw, 5rem);
+    column-gap: clamp(3.6rem, 4.44vw, 5rem);
+  }
+  column-count: 2;
+
+  & a {
+    --tw-text-opacity: 1;
+    color: rgb(118 117 114 / var(--tw-text-opacity));
+    @media (min-width: 640px) {
+      font-size: 1.4375rem;
+      white-space: nowrap;
+    }
+    padding-right: clamp(1.35rem, 1.67vw, 1.88rem);
+    padding-left: 0;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    display: flex;
+    position: relative;
+    text-decoration: inherit;
+  }
+`;
+
+export const FooterContact = styled.div`
+  margin-left: auto;
+  gap: clamp(2.25rem, 2.78vw, 3.13rem);
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  @media (min-width: 1024px) {
+    max-width: clamp(23.63rem, 29.17vw, 32.81rem);
+  }
+
+  & > div {
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+  }
+
+  & a {
+    @media (min-width: 640px) {
+      font-size: clamp(1.58rem, 1.94vw, 2.19rem);
+    }
+  }
+`;
+
+export const FooterBottomContainer = styled.div`
+  @media (min-width: 1280px) {
+    padding-right: clamp(3.97rem, 4.9vw, 5.51rem);
+    padding-left: clamp(3.97rem, 4.9vw, 5.51rem);
+  }
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  flex-shrink: 0;
+`;
+
+
+export const FooterInnerBottom = styled.div`
+  @media (min-width: 640px) {
+    align-items: center;
+    flex-direction: row;
+  }
+  padding-bottom: clamp(1.8rem, 2.22vw, 2.5rem);
+  padding-top: clamp(1.35rem, 1.67vw, 1.88rem);
+  --tw-border-opacity: 1;
+  border-color: rgb(218 218 218 / var(--tw-border-opacity));
+  border-top-width: 1px;
+`;
+
+export const FooterLanguageDiv = styled.div`
+  position: relative;
 `;

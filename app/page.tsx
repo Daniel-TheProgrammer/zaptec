@@ -27,6 +27,10 @@ import {
   SwipperSlide,
   MediaWrapperCard,
   CardContent,
+  JourneySection,
+  PinSpace,
+  JourneySectionInnerWrapper,
+  JourneyConent
 } from "./styles";
 
 export default function Home() {
@@ -125,13 +129,13 @@ export default function Home() {
                 <SwipperSlide>
                   <a>
                     <div>
-                      <MediaWrapperCard >
+                      <MediaWrapperCard>
                         <Image
                           src=""
                           alt=""
                           style={{
                             width: "100%",
-                            height: "283px"
+                            height: "283px",
                           }}
                         />
                       </MediaWrapperCard>
@@ -181,7 +185,7 @@ export default function Home() {
                           alt=""
                           style={{
                             width: "100%",
-                            height: "413px"
+                            height: "413px",
                           }}
                         />
                       </MediaWrapperCard>
@@ -199,6 +203,27 @@ export default function Home() {
               </SwipperWrapper>
             </Swiper>
           </InfoModuleUp>
+          <InfoModuleUp>
+            <Swiper>
+              <SwipperWrapper>
+                <div></div>
+                <div></div>
+                <div></div>
+              </SwipperWrapper>
+            </Swiper>
+          </InfoModuleUp>
+          <JourneySection>
+            <PinSpace>
+              <JourneySectionInnerWrapper>
+                <JourneyConent>
+                  <h2>
+                    <div>A product of the rugged </div>
+                    <div>Norwegian west coast</div>
+                  </h2>
+                </JourneyConent>
+              </JourneySectionInnerWrapper>
+            </PinSpace>
+          </JourneySection>
         </ModuleUpSection>
       </section>
     </>
