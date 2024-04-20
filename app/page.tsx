@@ -30,7 +30,9 @@ import {
   JourneySection,
   PinSpace,
   JourneySectionInnerWrapper,
-  JourneyConent
+  JourneyConent,
+  SplitText,
+  InnerTextContainer,
 } from "./styles";
 
 export default function Home() {
@@ -55,11 +57,15 @@ export default function Home() {
       </SmoothContent>
       <section>
         <Up1Section>
-          <InnerTextCenter>
+          <InnerTextContainer>
             <Text>
-              <div>Fully charged for your</div>
+              <SplitText>Fully</SplitText> <SplitText>charged</SplitText>{" "}
+              <SplitText>for</SplitText> <SplitText>your</SplitText>
+            </Text>
+            <Text>
               <div>next adventure</div>
             </Text>
+
             <MediaWrapperCar>
               <Image
                 src="/assets/zaptec-car (1).webp"
@@ -68,7 +74,7 @@ export default function Home() {
                 height={0}
               />
             </MediaWrapperCar>
-          </InnerTextCenter>
+          </InnerTextContainer>
         </Up1Section>
         <Up2Section>
           <InnerDesktop>
@@ -212,19 +218,19 @@ export default function Home() {
               </SwipperWrapper>
             </Swiper>
           </InfoModuleUp>
-          <JourneySection>
-            <PinSpace>
-              <JourneySectionInnerWrapper>
-                <JourneyConent>
-                  <h2>
-                    <div>A product of the rugged </div>
-                    <div>Norwegian west coast</div>
-                  </h2>
-                </JourneyConent>
-              </JourneySectionInnerWrapper>
-            </PinSpace>
-          </JourneySection>
         </ModuleUpSection>
+        <JourneySection>
+          <PinSpace>
+            <JourneySectionInnerWrapper>
+              <JourneyConent>
+                <h2>
+                  <div>A product of the rugged </div>
+                  <div>Norwegian west coast</div>
+                </h2>
+              </JourneyConent>
+            </JourneySectionInnerWrapper>
+          </PinSpace>
+        </JourneySection>
       </section>
     </>
   );

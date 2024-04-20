@@ -312,12 +312,105 @@ export const BlockImageInnerWrapper = styled.div`
   height: 100%;
 `;
 
+export const InnerTextContainer = (props: any) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [elementScrollTop, setElementScrollTop] = useState(0);
+  const [isElementInView, setIsElementInView] = useState(false);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+
+  console.log(
+    scrollPosition,
+    elementScrollTop,
+    isElementInView,
+    scrollPercentage
+  );
+
+  useEffect(() => {
+    const handleScroll = (e: any) => {
+      console.log(scrollPosition, elementScrollTop);
+      const position = window.scrollY;
+      setScrollPosition(position);
+
+      if (ref.current) {
+        const elementTop = ref.current.offsetTop;
+        setElementScrollTop(elementTop);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPosition, elementScrollTop]);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (element) {
+      const { top, bottom, height } = element.getBoundingClientRect();
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      setIsElementInView(top < windowHeight - 100 && bottom > 0);
+      const visibleHeight = Math.min(height, windowHeight - top);
+      const totalHeight = element.scrollHeight;
+      const percentage = (visibleHeight / totalHeight) * 100;
+      setScrollPercentage(percentage);
+    }
+  }, [scrollPosition]);
+
+  const greyToColor = (percentage: number) => {
+    const colorValue = Math.round((percentage / 100) * 255);
+    return `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
+  };
+
+  const backgroundColor = greyToColor(scrollPercentage);
+
+  return (
+    <InnerTextCenter ref={ref}>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          height: "100%",
+          width: `${scrollPercentage}%`,
+          backgroundColor: "grey",
+          transition: "width 0.3s ease",
+        }}
+      ></div>
+      {props.children}
+    </InnerTextCenter>
+  );
+};
+
 export const InnerTextCenter = styled.div`
-  max-width: clamp(45rem, 55.56vw, 62.5rem);
+  max-width: clamp(45rem, 55.56vw,62.5rem);
   text-align: center;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  position:relative;
+`;
+
+export const SplitText = (props: any) => {
+  return (
+    <Split>
+      {props.children.split("").map((text: string, index: number) => {
+        return (
+          <div style={{ display: "inline-block" }} key={index}>
+            {text}
+          </div>
+        );
+      })}
+    </Split>
+  );
+};
+
+export const Split = styled.div`
+  display: inline-block;
+  position: relative;
 `;
 
 export const Text = styled.div`
@@ -544,12 +637,11 @@ export const JourneySection = (props: any) => {
   });
 
   useEffect(() => {
-    
     const handleScroll = () => {
-      const section = sectionRef.current;
+      const section = sectionRef?.current;
       if (!section) return;
 
-      const rect = section.getBoundingClientRect();
+      const rect = section.children[0].getBoundingClientRect();
       const isInViewport =
         rect.top - 700 <= window.innerHeight && rect.bottom >= 700;
 
@@ -570,22 +662,7 @@ export const JourneySection = (props: any) => {
 };
 
 export const PinSpace = styled.div`
-  order: 0;
-  place-self: auto;
-  grid-area: auto;
-  z-index: auto;
-  float: none;
-  flex-shrink: 1;
-  display: flex;
-  margin: 0px;
-  inset: 0px;
-  position: relative;
-  flex-basis: auto;
-  overflow: visible;
-  box-sizing: border-box;
-  width: 100%;
-  height: 953px;
-  padding: 0px 0px 1430px;
+  padding: 0 0 50vh;
 `;
 
 export const JourneySectionInnerWrapper = styled.div`
