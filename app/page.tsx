@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 
@@ -34,8 +36,45 @@ import {
   SplitText,
   InnerTextContainer,
 } from "./styles";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [elementScrollTop, setElementScrollTop] = useState(0);
+  const [isElementInView, setIsElementInView] = useState(false);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = (e: any) => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+
+      if (ref.current) {
+        const elementTop = ref.current.offsetTop;
+        setElementScrollTop(elementTop);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPosition, elementScrollTop]);
+  useEffect(() => {
+    const element = ref.current;
+    if (element) {
+      const { top, bottom, height } = element.getBoundingClientRect();
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      setIsElementInView(top < windowHeight - 100 && bottom > 0);
+      const visibleHeight = Math.min(height, windowHeight - top);
+      const totalHeight = element.scrollHeight;
+      const percentage = (visibleHeight / totalHeight) * 100;
+      setScrollPercentage(percentage);
+    }
+  }, [scrollPosition]);
   return (
     <>
       <SmoothContent>
@@ -57,13 +96,13 @@ export default function Home() {
       </SmoothContent>
       <section>
         <Up1Section>
-          <InnerTextContainer>
-            <Text>
+          <InnerTextContainer ref={ref}>
+            <Text percentage={scrollPercentage}>
               <SplitText>Fully</SplitText> <SplitText>charged</SplitText>{" "}
               <SplitText>for</SplitText> <SplitText>your</SplitText>
             </Text>
-            <Text>
-              <div>next adventure</div>
+            <Text percentage={scrollPercentage}>
+              <SplitText>next</SplitText> <SplitText>adventure</SplitText>
             </Text>
 
             <MediaWrapperCar>

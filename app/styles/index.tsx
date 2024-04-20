@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { LegacyRef, createRef, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import React from "react";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -320,16 +321,8 @@ export const InnerTextContainer = (props: any) => {
   const [isElementInView, setIsElementInView] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
-  console.log(
-    scrollPosition,
-    elementScrollTop,
-    isElementInView,
-    scrollPercentage
-  );
-
   useEffect(() => {
     const handleScroll = (e: any) => {
-      console.log(scrollPosition, elementScrollTop);
       const position = window.scrollY;
       setScrollPosition(position);
 
@@ -369,7 +362,24 @@ export const InnerTextContainer = (props: any) => {
 
   return (
     <InnerTextCenter ref={ref}>
-      <div
+      {React.Children.map(props.children, (child) => {
+        return React.cloneElement(child, { percentage: scrollPercentage });
+      })}
+    </InnerTextCenter>
+  );
+};
+
+export const InnerTextCenter = styled.div`
+  max-width: clamp(45rem, 55.56vw, 62.5rem);
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+`;
+
+/*
+   <div
         style={{
           position: "absolute",
           top: 0,
@@ -380,28 +390,34 @@ export const InnerTextContainer = (props: any) => {
           transition: "width 0.3s ease",
         }}
       ></div>
-      {props.children}
-    </InnerTextCenter>
-  );
-};
-
-export const InnerTextCenter = styled.div`
-  max-width: clamp(45rem, 55.56vw,62.5rem);
-  text-align: center;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  position:relative;
-`;
+*/
 
 export const SplitText = (props: any) => {
+  const textRefs = useRef<(LegacyRef<HTMLDivElement> | undefined)[]>([]);
+  const [Texts, setTexts] = useState<any[]>([]);
+
+  const initializeRefs = (length: number) => {
+    textRefs.current = Array.from({ length }, () =>
+      createRef<HTMLDivElement>()
+    );
+    setTexts(textRefs.current);
+  };
+
+  useEffect(() => {
+    initializeRefs(props.children.length);
+  }, [props.children]);
+
   return (
     <Split>
       {props.children.split("").map((text: string, index: number) => {
         return (
-          <div style={{ display: "inline-block" }} key={index}>
+          <MyText
+            ref={textRefs.current[index]}
+            style={{ display: "inline-block" }}
+            key={index}
+          >
             {text}
-          </div>
+          </MyText>
         );
       })}
     </Split>
@@ -413,12 +429,84 @@ export const Split = styled.div`
   position: relative;
 `;
 
-export const Text = styled.div`
+const MyText = styled.div`
   color: rgb(34, 34, 34);
   @media (min-width: 640px) {
     font-size: clamp(4.05rem, 5vw, 5.63rem);
   }
 `;
+
+type TextProps = {
+  percentage: number;
+  children: React.ReactNode;
+};
+
+export const Text: React.FC<TextProps> = (props) => {
+  const [childrenElements, setChildrenElements] = useState<Element[]>([]);
+  const childrenContainerRef = useRef<HTMLDivElement>(null);
+  const abRef = useRef<HTMLDivElement>(null);
+
+  const childrenDivElement = childrenElements.map(
+    (elements) => elements.childNodes
+  );
+
+  childrenDivElement.forEach((element, index) => {
+    element.forEach((el) => {});
+  });
+
+  useEffect(() => {
+    if (childrenContainerRef.current) {
+      const elements = Array.from(childrenContainerRef.current.children);
+      setChildrenElements(elements);
+    }
+  }, [props.children]);
+
+  useEffect(() => {
+    childrenElements.forEach((element, index) => {
+      const childNodes = Array.from(element.childNodes);
+      childNodes.forEach((node) => {
+        if (node instanceof HTMLElement) {
+          const grandparentElement = node.parentElement?.parentElement;
+          if (grandparentElement) {
+            const grandparentOffsetLeft =
+              grandparentElement.getBoundingClientRect().left;
+            const childOffsetLeft = node.getBoundingClientRect().left;
+            const grandparentWidth =
+              grandparentElement.getBoundingClientRect().width;
+            const offsetLeftRelativeToGrandparent =
+              childOffsetLeft - grandparentOffsetLeft;
+
+            const percentage = Math.ceil(
+              (offsetLeftRelativeToGrandparent / grandparentWidth) * 100
+            );
+
+            if (props.percentage >= percentage) {
+              const transitionWidth = Math.min(
+                100,
+                ((props.percentage - offsetLeftRelativeToGrandparent) /
+                  node.offsetWidth) *
+                  100
+              );
+
+              node.style.transition = `color 0.3s`;
+              node.style.color = `rgb(34,34,34)`;
+            } else {
+              node.style.transition = "color 0.3s";
+              node.style.color = `rgb(218, 218, 218)`;
+            }
+          }
+        }
+      });
+    });
+  }, [props.percentage, childrenElements]);
+
+  return (
+    <div style={{ position: "relative" }} ref={childrenContainerRef}>
+      
+      {props.children}
+    </div>
+  );
+};
 
 export const MediaWrapperCar = styled.div`
   margin-top: clamp(2.7rem, 3.33vw, 3.75rem);
