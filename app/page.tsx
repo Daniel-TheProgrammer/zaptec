@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./page.module.css";
+import { Swiper as SwipperComponent, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
 
 import {
   SmoothContent,
@@ -165,23 +167,21 @@ export default function Home() {
           </Up3SectionContainer>
         </Up3Section>
         <ModuleUpSection>
-          <InfoModuleUp>
+          <InfoModuleUp className="info">
             <InfoModuleUpDiv>
               <h2>Info hub</h2>
             </InfoModuleUpDiv>
             <Swiper>
-              <SwipperWrapper>
-                <SwipperSlide>
-                  <a>
+              <SwipperComponent spaceBetween={20} slidesPerView={1.5}>
+                <SwiperSlide>
+                  <a className="link1">
                     <div>
-                      <MediaWrapperCard>
+                      <MediaWrapperCard $height={263}>
                         <Image
-                          src=""
+                          src="/assets/Fjelltur.webp"
                           alt=""
-                          style={{
-                            width: "100%",
-                            height: "283px",
-                          }}
+                          fill={true}
+                          sizes="100vw"
                         />
                       </MediaWrapperCard>
                       <CardContent>
@@ -195,18 +195,16 @@ export default function Home() {
                       </CardContent>
                     </div>
                   </a>
-                </SwipperSlide>
-                <SwipperSlide>
-                  <a>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <a className="link2">
                     <div>
-                      <MediaWrapperCard>
+                      <MediaWrapperCard $height={529}>
                         <Image
-                          src=""
+                          src="/assets/Zaptec_Germany.webp"
                           alt=""
-                          style={{
-                            width: "100%",
-                            height: "563px",
-                          }}
+                          fill={true}
+                          sizes="100vw"
                         />
                       </MediaWrapperCard>
                       <CardContent>
@@ -220,18 +218,16 @@ export default function Home() {
                       </CardContent>
                     </div>
                   </a>
-                </SwipperSlide>
-                <SwipperSlide>
-                  <a>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <a className="link3">
                     <div>
-                      <MediaWrapperCard>
+                      <MediaWrapperCard $height={388}>
                         <Image
-                          src=""
+                          src="/assets/Zaptec2_37.webp"
                           alt=""
-                          style={{
-                            width: "100%",
-                            height: "413px",
-                          }}
+                          fill={true}
+                          sizes="100vw"
                         />
                       </MediaWrapperCard>
                       <CardContent>
@@ -244,8 +240,8 @@ export default function Home() {
                       </CardContent>
                     </div>
                   </a>
-                </SwipperSlide>
-              </SwipperWrapper>
+                </SwiperSlide>
+              </SwipperComponent>
             </Swiper>
           </InfoModuleUp>
           <InfoModuleUp>

@@ -588,6 +588,9 @@ export const Swiper = styled.div`
   display: block;
 `;
 
+
+
+
 export const SwipperWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -630,11 +633,14 @@ export const SwipperSlide = styled.div`
   }
 `;
 
-export const MediaWrapperCard = styled.div`
+export const MediaWrapperCard = styled.div<{ $height: number }>`
   margin-bottom: clamp(1.13rem, 1.39vw, 1.56rem);
+  height:${props => props.$height}px ;
   position: relative;
+  width:100%;
   & img {
-    position: relative;
+    position: absolute;
+    object-fit:cover;
   }
 `;
 
